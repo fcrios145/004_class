@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form  action="#">
+        <label for="username">Texto:</label>
+        <input id="texto" name="texto" type="text">
+
+        <button id="boton-guardar" type="submit">guardar</button>
+    </form>
+    <ul id="tareas">
+        <li>
+            <span>texto</span>
+            <button>cerrar</button>
+        </li>
+    </ul>
+
+    <script>
+        var botonGuardar = document.getElementById('boton-guardar');
+        botonGuardar.addEventListener('click', function(event){
+            event.preventDefault();
+            var textoInput = document.querySelector("#texto");
+            var tareas = document.getElementById('tareas');
+
+            var newNode = document.createElement('li');
+
+            newNode.textContent = textoInput.value;
+            tareas.appendChild(newNode);
+
+            //limpiar el campo
+            textoInput.value = "";
+
+        });
+    </script>
+
+</body>
+</html>
