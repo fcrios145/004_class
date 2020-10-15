@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Static Template</title>
+  </head>
+  <body>
+    <h1>Text editor</h1>
+    <form action="#">
+      <textarea name="editor" id="editor" cols="30" rows="10"></textarea>
+    </form>
+    <button id="button-save">Guardar</button>
+    <button id="button-clear">Limpiar</button>
+    <br /><br />
+    <a id="anchor-tag" href="" target="_blank">Descargar</a>
+    <a href="index.html">llevame al otro archivo html</a>
+
+    <script>
+      var buttonSave = document.getElementById("button-save");
+      buttonSave.addEventListener("click", function () {
+        var editorElement = document.getElementById("editor");
+
+        var file = new Blob([editorElement.value], { type: "text/text" });
+        var tag = document.getElementById("anchor-tag");
+        tag.href = URL.createObjectURL(file);
+
+        tag.download = "file.txt";
+      });
+    </script>
+  </body>
+</html>

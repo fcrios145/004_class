@@ -13,29 +13,35 @@
         <button id="boton-guardar" type="submit">guardar</button>
     </form>
     <ul id="tareas">
-        <li>
-            <span>texto</span>
-            <button>cerrar</button>
-        </li>
+
     </ul>
 
     <script>
-        var botonGuardar = document.getElementById('boton-guardar');
-        botonGuardar.addEventListener('click', function(event){
-            event.preventDefault();
-            var textoInput = document.querySelector("#texto");
-            var tareas = document.getElementById('tareas');
-
-            var newNode = document.createElement('li');
-
-            newNode.textContent = textoInput.value;
+        var botonGuardar = document.getElementById("boton-guardar");
+        botonGuardar.addEventListener("click", function (event) {
+          event.preventDefault();
+          var textoInput = document.querySelector("#texto");
+          var tareas = document.getElementById("tareas");
+  
+          if (textoInput.value.length > 0 && textoInput.value.length <= 5) {
+            var newNode = document.createElement("li");
+            var spanNode = document.createElement("span");
+            var buttonNode = document.createElement("button");
+            spanNode.innerText = textoInput.value;
+            buttonNode.innerText = "Cerrar";
+            buttonNode.addEventListener("click", function () {
+              newNode.remove();
+            });
+            newNode.appendChild(spanNode);
+            newNode.appendChild(buttonNode);
+  
             tareas.appendChild(newNode);
-
+  
             //limpiar el campo
             textoInput.value = "";
-
+          }
         });
-    </script>
+      </script>
 
 </body>
 </html>
